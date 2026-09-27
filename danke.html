@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Danke – FestKasse</title>
+<style>
+  :root{--bg:#F4F5FA;--text:#12131A;--muted:#6B7080;--ok:#16A34A;--err:#E5484D}
+  body{margin:0;min-height:100dvh;display:grid;place-items:center;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;text-align:center;padding:24px}
+  .c{width:110px;height:110px;border-radius:50%;display:grid;place-items:center;margin:0 auto 22px;background:var(--ok)}
+  .c.err{background:var(--err)}
+  h1{font-size:28px;margin:0 0 8px;letter-spacing:-.02em}
+  p{color:var(--muted);font-size:17px;line-height:1.45;margin:0 auto;max-width:30ch}
+</style>
+</head>
+<body>
+<main>
+  <div class="c" id="c"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path id="i" d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+  <h1 id="t">Danke!</h1>
+  <p id="p">Deine Zahlung ist angekommen. Du kannst dieses Fenster schliessen.</p>
+</main>
+<script>
+  const q = new URLSearchParams(location.search);
+  if (q.has('fehler') || q.has('abgebrochen')) {
+    document.getElementById('c').classList.add('err');
+    document.getElementById('i').setAttribute('d', 'M6 6l12 12M18 6L6 18');
+    document.getElementById('t').textContent = q.has('abgebrochen') ? 'Abgebrochen' : 'Nicht geklappt';
+    document.getElementById('p').textContent = 'Die Zahlung wurde nicht ausgeführt. Bitte beim Stand nochmals versuchen.';
+  } else if (q.has('demo')) {
+    document.getElementById('p').textContent = 'Demo-Modus: Hier würde der Gast mit TWINT bezahlen. Die Kasse meldet die Zahlung gleich automatisch.';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F5FA">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="FestKasse">
+<title>FestKasse</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icons/icon-192.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-180.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app" id="app">
+  <section class="screen active" id="s-loading"><div class="loading">FestKasse wird geladen …</div></section>
+  <section class="screen" id="s-welcome"></section>
+  <section class="screen" id="s-join"></section>
+  <section class="screen" id="s-login"></section>
+  <section class="screen" id="s-setup"></section>
+  <section class="screen" id="s-admin"></section>
+  <section class="screen" id="s-pos"></section>
+  <section class="screen" id="s-pay"></section>
+  <section class="screen" id="s-success"></section>
+  <section class="screen" id="s-dash"></section>
+</div>
+<div class="menu-backdrop" id="menu" onclick="this.classList.remove('open')"><div class="menu" id="menu-inner" onclick="event.stopPropagation()"></div></div>
+<div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<noscript>Bitte JavaScript aktivieren.</noscript>
+<script type="module" src="app.js"></script>
+</body>
+</html>
